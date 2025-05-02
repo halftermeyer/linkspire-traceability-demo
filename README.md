@@ -61,7 +61,7 @@ A Neo4j-powered demo of Linkspire’s 5G router traceability platform, integrati
   RETURN path
   ```
   8. Easter-egg to showcase fast traversal capabilities: adds a long chain of dependency
-  [**script**](./linkspire_ingest_easter_egg.cypher)
+  ([**script**](./linkspire_ingest_easter_egg.cypher))
   9. Replay upstream dependency and root cause
   ```cypher
   MATCH path = (x:CustomerRequest {id:"CR001"})-[:SATISFIES]->{0,1}(y:Requirement)
