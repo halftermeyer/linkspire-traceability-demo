@@ -22,15 +22,54 @@ A Neo4j-powered demo of Linkspire’s 5G router traceability platform, integrati
 ## Step 3: Neo4j’s Graph Power in Query [**Demo Queries**](./linkspire_demo_queries.csv)
 - **Setup**: from any Neo4j empty database + UPX 
 - play queries
-  1. Ingest graph 
-  2. Create Full-Text composite index for future Bloom queries:
+  1. Ingest graph from [**script**](./linkspire_ingest.cypher)
+  2. Create Full-Text composite index for future Bloom queries
+  ```cypher
+    CREATE FULLTEXT INDEX fullTextComposite IF NOT EXISTS
+    FOR (n:CustomerRequest|Requirement|Design|TestCase)
+    ON EACH [n.id, n.description, n.title, n.name]
+  ```
   3. Show model
+  ```cypher
+  CALL db.schema.visualization()
+  ```
   4. Show a SFDC customer request and interact with the view
+  ```cypher
+  MATCH (x:CustomerRequest {id:"CR001"})
+  RETURN x
+  ```
   5. Show upstream dependencies from a SFDC customer request (via Doors requirements, Pront disigns and Quality Centres test cases)
+  ```cypher
+  MATCH path = (x:CustomerRequest {id:"CR001"})-[:SATISFIES]->{0,1}(y:Requirement)
+  OPTIONAL MATCH opt1_path=(y)
+    (()-[:IMPLEMENTED_BY|DEPENDS_ON]->(d:Design))*
+    ()-[:TESTED_BY]->{0,1}(t)
+  RETURN path, opt1_path
+  ```
   6. Root cause analysis from a SFDC customer request
+  ```cypher
+  MATCH path = (x:CustomerRequest {id:"CR001"})-[:SATISFIES]->{0,1}(y:Requirement)
+  (()-[:IMPLEMENTED_BY|DEPENDS_ON]->(ds:Design WHERE ds.status <> "Complete"))*(d)
+  OPTIONAL MATCH opt = (d)-[:TESTED_BY]->{0,1}(t:TestCase WHERE t.status <> "Passed")
+  RETURN path, opt
+  ```
   7. Impact Analysis from a Quality Centres test case
+  ```cypher
+  MATCH path = (tc:TestCase {id: "TC012"})<-[:TESTED_BY]-(d:Design)
+  <-[:DEPENDS_ON]-*(:Design)
+  <-[:IMPLEMENTED_BY]-(requirement)<-[:SATISFIES]-(request)
+  RETURN path
+  ```
   8. Easter-egg to showcase fast traversal capabilities: adds a long chain of dependency
-  9. Replay upstream dependency and root cause.
+  [**script**](./linkspire_ingest_easter_egg.cypher)
+  9. Replay upstream dependency and root cause
+  ```cypher
+  MATCH path = (x:CustomerRequest {id:"CR001"})-[:SATISFIES]->{0,1}(y:Requirement)
+  OPTIONAL MATCH opt1_path=(y)
+    (()-[:IMPLEMENTED_BY|DEPENDS_ON]->(d:Design))*
+    ()-[:TESTED_BY]->{0,1}(t)
+  RETURN path, opt1_path
+  ```
 
 
 ## Step 4: Exploration in Explore [**Demo Perspective**](./linkspire_perspective.json)
