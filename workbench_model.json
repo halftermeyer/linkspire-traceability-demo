@@ -1,0 +1,242 @@
+{
+  "metadata": {
+    "cypherWorkbenchVersion": "1.8.0",
+    "title": "Linkspire Traceability",
+    "description": "Linkspire’s 5G router traceability platform, integrating SFDC, Doors, Pront, and Quality Centres.",
+    "notes": "",
+    "customer": "",
+    "authors": "",
+    "tags": "",
+    "dateCreated": "1746174577333",
+    "dateUpdated": "1746174817812",
+    "viewSettings": {
+      "parentContainerViewSettings": {
+        "rightDrawerOpen": false,
+        "rightDrawerOpenWidth": "800px",
+        "destinationTabIndex": 0,
+        "exportSettings": {}
+      },
+      "canvasViewSettings": {
+        "currentPan": {
+          "x": -1,
+          "y": 2
+        },
+        "currentOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "scaleFactor": 1
+      }
+    }
+  },
+  "dataModel": {
+    "nodeLabels": {
+      "Node0": {
+        "classType": "NodeLabel",
+        "label": "CustomerRequest",
+        "fromDataSources": [],
+        "key": "Node0",
+        "indexes": [],
+        "properties": {},
+        "secondaryNodeLabelKeys": [],
+        "isOnlySecondaryNodeLabel": false,
+        "description": null,
+        "referenceData": "{\"secondaryNodeLabelKeys\":[],\"isOnlySecondaryNodeLabel\":false}",
+        "display": {
+          "color": "#9c27b0",
+          "stroke": "#4c0064",
+          "strokeWidth": 4,
+          "x": 240,
+          "y": 320,
+          "radius": 40,
+          "size": "md",
+          "width": 80,
+          "height": 80,
+          "fontSize": 14,
+          "fontColor": "white",
+          "textLocation": "middle",
+          "isLocked": false,
+          "glyphs": []
+        },
+        "x": 240,
+        "y": 320
+      },
+      "Node1": {
+        "classType": "NodeLabel",
+        "label": "Requirement",
+        "fromDataSources": [],
+        "key": "Node1",
+        "indexes": [],
+        "properties": {},
+        "secondaryNodeLabelKeys": [],
+        "isOnlySecondaryNodeLabel": false,
+        "description": null,
+        "referenceData": "{\"secondaryNodeLabelKeys\":[],\"isOnlySecondaryNodeLabel\":false}",
+        "display": {
+          "color": "#cddc39",
+          "stroke": "#7a8e00",
+          "strokeWidth": 4,
+          "x": 560,
+          "y": 320,
+          "radius": 40,
+          "size": "md",
+          "width": 80,
+          "height": 80,
+          "fontSize": 14,
+          "fontColor": "black",
+          "textLocation": "middle",
+          "isLocked": false,
+          "glyphs": []
+        },
+        "x": 560,
+        "y": 320
+      },
+      "Node2": {
+        "classType": "NodeLabel",
+        "label": "Design",
+        "fromDataSources": [],
+        "key": "Node2",
+        "indexes": [],
+        "properties": {},
+        "secondaryNodeLabelKeys": [],
+        "isOnlySecondaryNodeLabel": false,
+        "description": null,
+        "referenceData": "{\"secondaryNodeLabelKeys\":[],\"isOnlySecondaryNodeLabel\":false}",
+        "display": {
+          "color": "#009688",
+          "stroke": "#004d42",
+          "strokeWidth": 4,
+          "x": 660,
+          "y": 560,
+          "radius": 40,
+          "size": "md",
+          "width": 80,
+          "height": 80,
+          "fontSize": 14,
+          "fontColor": "white",
+          "textLocation": "middle",
+          "isLocked": false,
+          "glyphs": []
+        },
+        "x": 660,
+        "y": 560
+      },
+      "Node3": {
+        "classType": "NodeLabel",
+        "label": "TestCase",
+        "fromDataSources": [],
+        "key": "Node3",
+        "indexes": [],
+        "properties": {},
+        "secondaryNodeLabelKeys": [],
+        "isOnlySecondaryNodeLabel": false,
+        "description": null,
+        "referenceData": "{\"secondaryNodeLabelKeys\":[],\"isOnlySecondaryNodeLabel\":false}",
+        "display": {
+          "color": "#ff9800",
+          "stroke": "#a44f00",
+          "strokeWidth": 4,
+          "x": 1080,
+          "y": 580,
+          "radius": 40,
+          "size": "md",
+          "width": 80,
+          "height": 80,
+          "fontSize": 14,
+          "fontColor": "white",
+          "textLocation": "middle",
+          "isLocked": false,
+          "glyphs": []
+        },
+        "x": 1080,
+        "y": 580
+      }
+    },
+    "relationshipTypes": {
+      "Rel1": {
+        "classType": "RelationshipType",
+        "key": "Rel1",
+        "type": "SATISFIES",
+        "startNodeLabelKey": "Node0",
+        "endNodeLabelKey": "Node1",
+        "properties": {},
+        "referenceData": {},
+        "description": null,
+        "outMinCardinality": "0",
+        "outMaxCardinality": "many",
+        "inMinCardinality": "0",
+        "inMaxCardinality": "many",
+        "display": {
+          "color": "black",
+          "fontSize": 14,
+          "strokeWidth": 3,
+          "offset": 0,
+          "glyph": null
+        }
+      },
+      "Rel2": {
+        "classType": "RelationshipType",
+        "key": "Rel2",
+        "type": "IMPLEMENTED_BY",
+        "startNodeLabelKey": "Node1",
+        "endNodeLabelKey": "Node2",
+        "properties": {},
+        "referenceData": {},
+        "description": null,
+        "outMinCardinality": "0",
+        "outMaxCardinality": "many",
+        "inMinCardinality": "0",
+        "inMaxCardinality": "many",
+        "display": {
+          "color": "black",
+          "fontSize": 14,
+          "strokeWidth": 3,
+          "offset": 0,
+          "glyph": null
+        }
+      },
+      "Rel3": {
+        "classType": "RelationshipType",
+        "key": "Rel3",
+        "type": "DEPENDS_ON",
+        "startNodeLabelKey": "Node2",
+        "endNodeLabelKey": "Node2",
+        "properties": {},
+        "referenceData": {},
+        "description": null,
+        "outMinCardinality": "0",
+        "outMaxCardinality": "many",
+        "inMinCardinality": "0",
+        "inMaxCardinality": "many",
+        "display": {
+          "color": "black",
+          "fontSize": 14,
+          "strokeWidth": 3,
+          "offset": 40,
+          "glyph": null
+        }
+      },
+      "Rel4": {
+        "classType": "RelationshipType",
+        "key": "Rel4",
+        "type": "TESTED_BY",
+        "startNodeLabelKey": "Node2",
+        "endNodeLabelKey": "Node3",
+        "properties": {},
+        "referenceData": {},
+        "description": null,
+        "outMinCardinality": "0",
+        "outMaxCardinality": "many",
+        "inMinCardinality": "0",
+        "inMaxCardinality": "many",
+        "display": {
+          "color": "black",
+          "fontSize": 14,
+          "strokeWidth": 3,
+          "offset": 0,
+          "glyph": null
+        }
+      }
+    }
+  }
+}
