@@ -14,10 +14,11 @@ A Neo4j-powered demo of Linkspire’s 5G router traceability platform, integrati
 
 ## Step 2: Data Federation 
 - **Solution**: Linkspire has federated the data:
-  - Uses eqube connectors to pull from SFDC, Doors, Pront, and Quality Centres.
+  - Uses connectors to pull from SFDC, Doors, Pront, and Quality Centres.
   - Maps fields (e.g., SFDC’s request ID to Doors’ requirement ID) without replication.
   - Ships linked data to Neo4j as nodes (`CustomerRequest`, `Requirement`, `Design`, `TestCase`) and relationships (`SATISFIES`, `IMPLEMENTED_BY`, `TESTED_BY`, `DEPENDS_ON`).
 
+![model](https://github.com/user-attachments/assets/f1678f38-207d-492f-af79-39ef6bf9e91f)
 
 ## Step 3: Neo4j’s Graph Power in Query [**Demo Queries**](./linkspire_demo_queries.csv)
 - **Setup**: from any Neo4j empty database + UPX 
